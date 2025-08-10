@@ -4,14 +4,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="deleteEmployeeModalLabel">{{title}}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
-                ...
+                ¿Estás seguro que deseas eliminar al empleado <strong>{{ employeeName }}</strong>?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                <button type="button" class="btn btn-primary">Yes</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn" data-bs-dismiss="modal"
+                    (click)="onDeleteEmployee(employeeId)">Sí,
+                    eliminar</button>
             </div>
         </div>
     </div>

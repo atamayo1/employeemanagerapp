@@ -132,4 +132,4 @@
 
 <app-add-employee (employeeSaved)="getEmployees()"></app-add-employee>
 <app-edit-employee [employeeObject]="employeeObject" (employeeUpdated)="getEmployees()"></app-edit-employee>
-<app-delete-employee></app-delete-employee>
+<app-delete-employee [employeeObject]="employeeObject" (employeeUpdated)="getEmployees()"></app-delete-employee>

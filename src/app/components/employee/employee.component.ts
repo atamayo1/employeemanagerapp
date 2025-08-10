@@ -50,6 +50,7 @@ export class EmployeeComponent {
       button.setAttribute('data-target', '#editEmployeeModal');
     }
     if (mode === 'delete') {
+      this.employeeObject = employee;
       button.setAttribute('data-target', '#deleteEmployeeModal');
     }
     container?.appendChild(button);
