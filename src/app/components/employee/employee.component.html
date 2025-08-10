@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-6">
             <div class="d-flex flex-wrap align-items-center justify-content-end gap-2">
-                <ul class="nav nav-pills me-3">
+                <!--  <ul class="nav nav-pills me-3">
                     <li class="nav-item">
                         <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="List">
                             <i class="bx bx-list-ul"></i>
@@ -19,12 +19,12 @@
                             <i class="bx bx-grid-alt"></i>
                         </a>
                     </li>
-                </ul>
+                </ul> -->
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal"
                     (click)="onOpenModal(null, 'add')">
                     <i class="bx bx-plus me-1"></i> Add New
                 </button>
-                <div class="dropdown">
+                <!-- <div class="dropdown">
                     <a class="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle" href="#"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bx bx-dots-horizontal-rounded"></i>
@@ -34,7 +34,7 @@
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -51,7 +51,6 @@
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editEmployeeModal"
                                     (click)="onOpenModal(emp, 'edit')">Edit</a>
-                                <a class="dropdown-item">Action</a>
                                 <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal"
                                     (click)="onOpenModal(emp, 'delete')">Remove</a>
                             </div>
@@ -126,7 +125,7 @@
 
 <ng-template #noEmployees>
     <div class="alert alert-info text-center mt-4">
-        No hay empleados para mostrar.
+        Doesn't exist employees to show.
     </div>
 </ng-template>
 
