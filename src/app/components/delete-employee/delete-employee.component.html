@@ -7,13 +7,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
-                ¿Estás seguro que deseas eliminar al empleado <strong>{{ employeeName }}</strong>?
+                ¿Are you sure you want to delete <strong>{{ employeeName }}</strong>?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                 <button type="button" class="btn btn-danger" id="confirmDeleteBtn" data-bs-dismiss="modal"
-                    (click)="onDeleteEmployee(employeeId)">Sí,
-                    eliminar</button>
+                    (click)="onDeleteEmployee(employeeId)">Yes, delete</button>
             </div>
         </div>
     </div>

@@ -29,3 +29,17 @@
         border-left: .3em solid;
     }
 }
+
+.clear-btn {
+    position: absolute;
+    right: 90px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #dc3545;
+    padding: 0 5px;
+    line-height: 1;
+}

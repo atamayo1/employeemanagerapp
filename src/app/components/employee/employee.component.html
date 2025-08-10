@@ -40,7 +40,7 @@
     </div>
     <div class="container" id="main-container">
         <div class="row">
-            <div class="col-xl-3 col-sm-6" *ngFor=" let emp of employees">
+            <div class="col-xl-3 col-sm-6" *ngFor=" let emp of filteredEmployees">
                 <div class="card">
                     <div class="card-body">
                         <div class="dropdown float-end">
@@ -102,7 +102,7 @@
 
     <div class="row g-0 align-items-center pb-4 mt-3">
         <div class="col-sm-6">
-            <p class="mb-sm-0">Showing 1 to {{ employees.length }} of {{ employees.length }} entries</p>
+            <p class="mb-sm-0">Showing 1 to {{ filteredEmployees.length }} of {{ filteredEmployees.length }} entries</p>
         </div>
         <div class="col-sm-6">
             <div class="float-sm-end">

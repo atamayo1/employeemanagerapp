@@ -6,6 +6,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { EditEmployeeComponent } from "../edit-employee/edit-employee.component";
 import { AddEmployeeComponent } from "../add-employee/add-employee.component";
 import { DeleteEmployeeComponent } from "../delete-employee/delete-employee.component";
+import { EmployeeSearchService } from '../../employee-search.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-employee',
@@ -17,18 +19,42 @@ import { DeleteEmployeeComponent } from "../delete-employee/delete-employee.comp
 export class EmployeeComponent {
   public employees: Employee[] = [];
   public employeeObject: Employee | null = null;
+  public filteredEmployees: Employee[] = [];
+  private searchSubscription!: Subscription;
 
-  constructor(private employeeService: EmployeeService) {
+  constructor(private employeeService: EmployeeService, private employeeSearchService: EmployeeSearchService) {
   }
 
   ngOnInit(): void {
     this.getEmployees();
+
+    this.searchSubscription = this.employeeSearchService.searchTerm$.subscribe(term => {
+      this.filterEmployees(term);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.searchSubscription.unsubscribe();
+  }
+
+  private filterEmployees(term: string): void {
+    if (!term) {
+      this.filteredEmployees = [...this.employees];
+    } else {
+      const lowerTerm = term.toLowerCase();
+      this.filteredEmployees = this.employees.filter(emp =>
+        emp.name.toLowerCase().includes(lowerTerm) ||
+        emp.email.toLowerCase().includes(lowerTerm) ||
+        emp.jobTitle.toLowerCase().includes(lowerTerm)
+      );
+    }
   }
 
   public getEmployees(): void {
     this.employeeService.getEmployees().subscribe(
       (response: Employee[]) => {
         this.employees = response;
+        this.filteredEmployees = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
