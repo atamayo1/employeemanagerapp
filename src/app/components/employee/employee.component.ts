@@ -20,6 +20,7 @@ export class EmployeeComponent {
 
   constructor(private employeeService: EmployeeService) {
   }
+
   ngOnInit(): void {
     this.getEmployees();
   }
@@ -45,8 +46,8 @@ export class EmployeeComponent {
       button.setAttribute('data-target', '#addEmployeeModal');
     }
     if (mode === 'edit') {
-      button.setAttribute('data-target', '#editEmployeeModal');
       this.employeeObject = employee;
+      button.setAttribute('data-target', '#editEmployeeModal');
     }
     if (mode === 'delete') {
       button.setAttribute('data-target', '#deleteEmployeeModal');

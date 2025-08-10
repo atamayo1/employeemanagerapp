@@ -45,3 +45,26 @@ h6 {
 a {
     color: #707070;
 }
+
+.fullname,
+.badge {
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.email,
+.phone {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.avatar-md {
+    width: 80px;
+    height: auto;
+    object-fit: cover;
+    flex-shrink: 0;
+}
