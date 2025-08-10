@@ -1,0 +1,134 @@
+<div class="container" *ngIf="employees && employees.length > 0; else noEmployees">
+    <div class="row align-items-center mb-3">
+        <div class="col-md-6">
+            <h5 class="card-title">
+                Employee List <span class="text-muted fw-normal ms-2">({{ employees.length }})</span>
+            </h5>
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex flex-wrap align-items-center justify-content-end gap-2">
+                <ul class="nav nav-pills me-3">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="List">
+                            <i class="bx bx-list-ul"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" data-bs-toggle="tooltip" data-bs-placement="top"
+                            title="Grid">
+                            <i class="bx bx-grid-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal"
+                    (click)="onOpenModal(null, 'add')">
+                    <i class="bx bx-plus me-1"></i> Add New
+                </button>
+                <div class="dropdown">
+                    <a class="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle" href="#"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bx bx-dots-horizontal-rounded"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="main-container">
+        <div class="row">
+            <div class="col-xl-3 col-sm-6" *ngFor=" let emp of employees">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dropdown float-end">
+                            <a class="text-muted dropdown-toggle font-size-16" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true">
+                                <i class="bx bx-dots-horizontal-rounded"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editEmployeeModal"
+                                    (click)="onOpenModal(emp, 'edit')">Edit</a>
+                                <a class="dropdown-item">Action</a>
+                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal"
+                                    (click)="onOpenModal(emp, 'delete')">Remove</a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <img [src]="emp.imageUrl || 'https://bootdey.com/img/Content/avatar/avatar1.png'"
+                                    alt="avatar" class="avatar-md rounded-circle img-thumbnail" />
+                            </div>
+                            <div class="flex-1 ms-3">
+                                <h5 class="font-size-16 mb-1"><a href="#" class="text-dark">{{ emp.name }}</a></h5>
+                                <span class="badge" [ngClass]="{
+                'badge-soft-success': emp.jobTitle.toLowerCase().includes('developer'),
+                'badge-soft-danger': emp.jobTitle.toLowerCase().includes('designer'),
+                'badge-soft-warning': emp.jobTitle.toLowerCase().includes('backend')
+              }">{{ emp.jobTitle }}</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 pt-1">
+                            <hr>
+                            <p class="text-muted mb-0 mt-2">{{ emp.email
+                                }}
+                            </p>
+                            <hr>
+                            <p class="text-muted mb-0"><i
+                                    class="mdi mdi-phone font-size-15 align-middle pe-2 text-primary"></i> {{ emp.phone
+                                }}
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="float-right btn-group btn-group-sm">
+                            <button class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
+                                data-bs-toggle="modal" data-bs-target="#editEmployeeModal" data-original-title="Edit"
+                                (click)="onOpenModal(emp, 'edit')"><i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip"
+                                data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal"
+                                data-original-title="Delete" (click)="onOpenModal(emp, 'delete')"><i
+                                    class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-0 align-items-center pb-4 mt-3">
+        <div class="col-sm-6">
+            <p class="mb-sm-0">Showing 1 to {{ employees.length }} of {{ employees.length }} entries</p>
+        </div>
+        <div class="col-sm-6">
+            <div class="float-sm-end">
+                <ul class="pagination mb-sm-0">
+                    <li class="page-item disabled">
+                        <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+                    </li>
+                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item">
+                        <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #noEmployees>
+    <div class="alert alert-info text-center mt-4">
+        No hay empleados para mostrar.
+    </div>
+</ng-template>
+
+<app-add-employee></app-add-employee>
+<app-edit-employee [employeeObject]="employeeObject"></app-edit-employee>
+<app-delete-employee></app-delete-employee>

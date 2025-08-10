@@ -1,0 +1,43 @@
+<div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="editEmployeeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editEmployeeModalLabel">{{title}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name"
+                        [defaultValue]="employeeObject?.name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="Email"
+                        [defaultValue]="employeeObject?.email">
+                </div>
+                <div class="mb-3">
+                    <label for="jobTitle" class="form-label">Job Title</label>
+                    <input type="text" class="form-control" id="jobTitle" placeholder="Job title"
+                        [defaultValue]="employeeObject?.jobTitle">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="phone" placeholder="Phone"
+                        [defaultValue]="employeeObject?.phone">
+                </div>
+                <div class="mb-3">
+                    <label for="imageUrl" class="form-label">Image Url</label>
+                    <input type="text" class="form-control" id="imageUrl" placeholder="Image url"
+                        [defaultValue]="employeeObject?.imageUrl">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    (click)="onCloseModal()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onUpdateEmployee()">Update changes</button>
+            </div>
+        </div>
+    </div>
+</div>
