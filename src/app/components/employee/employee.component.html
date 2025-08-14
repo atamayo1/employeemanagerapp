@@ -62,7 +62,8 @@
                                     [src]="emp.imageUrl" alt="avatar">
                             </div>
                             <div class="flex-1 ms-3">
-                                <h5 class="font-size-16 mb-1 fullname"><a href="#" class="text-dark">{{ emp.name }}</a>
+                                <h5 class="font-size-16 mb-1 fullname"><a class="text-dark">{{ emp.name
+                                        }}</a>
                                 </h5>
                                 <span class="badge" [ngClass]="{
                 'badge-soft-success': emp.jobTitle.toLowerCase().includes('developer'),
@@ -78,7 +79,8 @@
                             </p>
                             <hr>
                             <p class="text-muted mb-0 phone"><i
-                                    class="mdi mdi-phone font-size-15 align-middle pe-2 text-primary"></i> {{ emp.phone
+                                    class="mdi mdi-phone font-size-15 align-middle pe-2 text-primary"></i> {{
+                                emp.phone
                                 }}
                             </p>
                         </div>
@@ -101,21 +103,22 @@
 
     <div class="row g-0 align-items-center pb-4 mt-3">
         <div class="col-sm-6">
-            <p class="mb-sm-0">Showing 1 to {{ filteredEmployees.length }} of {{ filteredEmployees.length }} entries</p>
+            <p class="mb-sm-0">Showing 1 to {{ filteredEmployees.length }} of {{ filteredEmployees.length }} entries
+            </p>
         </div>
         <div class="col-sm-6">
             <div class="float-sm-end">
                 <ul class="pagination mb-sm-0">
                     <li class="page-item disabled">
-                        <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+                        <a class="page-link"><i class="mdi mdi-chevron-left"></i></a>
                     </li>
-                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item active"><a class="page-link">1</a></li>
+                    <li class="page-item"><a class="page-link">2</a></li>
+                    <li class="page-item"><a class="page-link">3</a></li>
+                    <li class="page-item"><a class="page-link">4</a></li>
+                    <li class="page-item"><a class="page-link">5</a></li>
                     <li class="page-item">
-                        <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+                        <a class="page-link"><i class="mdi mdi-chevron-right"></i></a>
                     </li>
                 </ul>
             </div>

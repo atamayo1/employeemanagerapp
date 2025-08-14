@@ -1,20 +1,27 @@
 import { Component } from '@angular/core';
-import { EmployeeService } from '../../employee.service';
 import { EmployeeSearchService } from '../../employee-search.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
-  selector: 'app-navbar-component',
+  selector: 'app-navbar',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './navbar-component.component.html',
-  styleUrl: './navbar-component.component.css'
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
 })
-export class NavbarComponentComponent {
+export class NavbarComponent {
   searchTerm = '';
+  username = '';
 
-  constructor(private employeeSearchService: EmployeeSearchService) { }
+  constructor(private employeeSearchService: EmployeeSearchService, private router: Router, private authService: AuthService) { }
+
+  ngOnInit() {
+    this.username = String(this.authService.getUsername());
+  }
 
   onSearch(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -29,5 +36,10 @@ export class NavbarComponentComponent {
 
   onSubmit(event: Event): void {
     event.preventDefault();
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }
